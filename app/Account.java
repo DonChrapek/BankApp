@@ -1,7 +1,7 @@
 package app;
 
-public class Account {
+public abstract class Account implements IBaseRate {
     public Account {
-        
+
     }
 }
