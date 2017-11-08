@@ -6,7 +6,7 @@ public abstract class Account implements IBaseRate {
     double balance;
 
     static int index = 10000;
-    String accountNumber;
+    String accountNumber; // 1 or 2 (Saving/Checking) + last 2 digits of SSN + unique 5 digits + random 3 digits
     double rate;
 
 
@@ -20,6 +20,7 @@ public abstract class Account implements IBaseRate {
         this.accountNumber = setAccountNumber();
     }
 
+    // Set account number without 1st digit
     private String setAccountNumber() {
         String lastTwoOfSSN = sSN.substring(sSN.length()-2, sSN.length());
         int uniqueID = index;
@@ -30,7 +31,7 @@ public abstract class Account implements IBaseRate {
 
     public void showInfo() {
         System.out.println(
-                        "\nNAME: " + this.name +
+                        "NAME: " + this.name +
                         "\nACCOUNT NUMBER: " + this.accountNumber +
                         "\nBALANCE: $" + this.balance
         );
