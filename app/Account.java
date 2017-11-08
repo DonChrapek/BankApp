@@ -6,7 +6,7 @@ public abstract class Account implements IBaseRate {
     double balance;
 
     static int index = 10000;
-    String accountNumber; // 1 or 2 (Saving/Checking) + last 2 digits of SSN + unique 5 digits + random 3 digits
+    String accountNumber; // Following pattern: 1 or 2 (Saving/Checking) + last 2 digits of SSN + unique 5 digits + random 3 digits
     double rate;
 
 
@@ -20,6 +20,22 @@ public abstract class Account implements IBaseRate {
         this.accountNumber = setAccountNumber();
 
         setRate();
+    }
+
+    // Interest rate after one year
+    public void compound() {
+        double accruedInterest = balance * (rate/100);
+        balance += accruedInterest;
+        System.out.println("Accrued Interest: $" + accruedInterest);
+        printBalance();
+    }
+
+    // Interest rate after n months
+    public void compound (int numberOfMonths) {
+        double accruedInterest = (balance * (1 + Math.pow((rate/100), (numberOfMonths/12)))) - balance;
+        balance += accruedInterest;
+        System.out.println("Accrued Interest: $" + accruedInterest);
+        printBalance();
     }
 
     // Common methods - transactions

@@ -9,8 +9,6 @@ public class BankApp {
         chkacc1.showInfo();
         savacc1.showInfo();
 
-        savacc1.withdraw(3000);
-        savacc1.transfer("12132132", "Na dragi", 350);
-        savacc1.deposit(74);
+        savacc1.compound();
     }
 }
