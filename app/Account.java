@@ -18,6 +18,48 @@ public abstract class Account implements IBaseRate {
         // Set account number
         index++;
         this.accountNumber = setAccountNumber();
+
+        setRate();
+    }
+
+    // Common methods - transactions
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Depositing $" + amount);
+        printBalance();
+    }
+
+    public void transfer(String receiverAccountNumber, String title, double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Transfering $" + amount + " to: " + receiverAccountNumber + ". Title: " + title);
+            printBalance();
+        } else {
+            System.out.println("ERROR: You don't have enough amount on your Account. Your balance is $" + balance);
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawing $" + amount);
+            printBalance();
+        } else {
+            System.out.println("ERROR: You don't have enough amount on your Account. Your balance is $" + balance);
+        }
+    }
+
+
+    public void printBalance() {
+        System.out.println("Your balance: $" + balance);
+    }
+
+    public abstract void setRate();
+
+    public void showInfo() {
+        System.out.println("NAME: " + this.name + "\nACCOUNT NUMBER: " + this.accountNumber +
+                "\nBALANCE: $" + this.balance + "\nRATE: " + rate + "%"
+        );
     }
 
     // Set account number without 1st digit
@@ -27,14 +69,6 @@ public abstract class Account implements IBaseRate {
         int randomNumber = (int) (Math.random()*1000);
 
         return lastTwoOfSSN + uniqueID + randomNumber;
-    }
-
-    public void showInfo() {
-        System.out.println(
-                        "NAME: " + this.name +
-                        "\nACCOUNT NUMBER: " + this.accountNumber +
-                        "\nBALANCE: $" + this.balance
-        );
     }
 
 }
