@@ -1,8 +1,8 @@
 package app;
 
 public class Savings extends Account {
-    int safetyDepositBoxID; // 3-digit number
-    int safetyDepositBoxKey; // 4-digit number
+    private int safetyDepositBoxID; // 3-digit number
+    private int safetyDepositBoxKey; // 4-digit number
 
     public Savings(String name, String sSN, double initDeposit) {
         super(name, sSN, initDeposit);

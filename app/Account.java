@@ -1,13 +1,13 @@
 package app;
 
 public abstract class Account implements IBaseRate {
-    String name;
-    String sSN;
-    double balance;
+    private String name;
+    private String sSN;
+    private double balance;
 
-    static int index = 10000;
-    String accountNumber; // Following pattern: 1 or 2 (Saving/Checking) + last 2 digits of SSN + unique 5 digits + random 3 digits
-    double rate;
+    private static int index = 10000;
+    protected String accountNumber; // Following pattern: 1 or 2 (Saving/Checking) + last 2 digits of SSN + unique 5 digits + random 3 digits
+    protected double rate;
 
 
     public Account(String name, String sSN, double initDeposit) {
@@ -25,14 +25,6 @@ public abstract class Account implements IBaseRate {
     // Interest rate after one year
     public void compound() {
         double accruedInterest = balance * (rate/100);
-        balance += accruedInterest;
-        System.out.println("Accrued Interest: $" + accruedInterest);
-        printBalance();
-    }
-
-    // Interest rate after n months
-    public void compound (int numberOfMonths) {
-        double accruedInterest = (balance * (1 + Math.pow((rate/100), (numberOfMonths/12)))) - balance;
         balance += accruedInterest;
         System.out.println("Accrued Interest: $" + accruedInterest);
         printBalance();
@@ -86,5 +78,11 @@ public abstract class Account implements IBaseRate {
 
         return lastTwoOfSSN + uniqueID + randomNumber;
     }
+
+    // Getters
+    public String getName() { return name; }
+    public String getsSN() { return sSN; }
+    public double getBalance() { return balance; }
+    public String getAccountNumber() { return accountNumber; }
 
 }
