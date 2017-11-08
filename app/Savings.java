@@ -8,8 +8,12 @@ public class Savings extends Account {
         super(name, sSN, initDeposit);
 
         accountNumber = "1" + accountNumber;
-        System.out.println("NEW SAVING ACCOUNT");
-        System.out.println("ACCOUNT NUMBER: " + accountNumber + "\n");
+    }
+
+    @Override
+    public void showInfo() {
+        super.showInfo();
+        System.out.println("ACCOUNT TYPE: Savings");
     }
 
 }

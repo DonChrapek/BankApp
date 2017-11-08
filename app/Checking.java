@@ -8,8 +8,11 @@ public class Checking extends Account {
         super(name, sSN, initDeposit);
 
         accountNumber = "1" + accountNumber;
-        System.out.println("NEW CHECKING ACCOUNT");
-        System.out.println("ACCOUNT NUMBER: " + accountNumber + "\n");
     }
 
+    @Override
+    public void showInfo() {
+        super.showInfo();
+        System.out.println("ACCOUNT TYPE: Checking");
+    }
 }
